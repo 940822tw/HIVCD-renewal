@@ -1,33 +1,41 @@
 @import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+:root {
+  --cdYellow: #fff101;
+  --unit: 12px;
+  --unit-half: 6px;
+}
+
 ::-webkit-scrollbar { display:none;}
+
 *{font-size: 18px; font-family: 'Noto Sans KR', sans-serif; font-weight: 600}
-html {background: #fff101;}
+html {background:  var(--cdYellow);}
 body {margin: 0px; padding: 0px; width: 100%; height:; x-overflow: hidden;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;cursor:default; word-break: keep-all;}
 a {color: black; text-decoration: none;}
 p {word-break: keep-all;}
-u {border-bottom: 2px solid #000; text-decoration: none;}
+u {border-bottom: 2px solid #000; text-decoration: none; display: inline-block; height: 24px}
 hr{border:0; height: 0px; width:95%; background: #000; border-color: #000;}
-ul{list-style-type: none; line-height: 1.4; padding-left: 10px}
+ul{list-style-type: none; line-height: 1.4; padding-left: var(--unit);}
 li a:hover{cursor: pointer;}
 li{width: auto;}
 
-header{height: 50px; border-bottom: 2px solid #000; box-sizing: border-box; width: 100%; position: fixed; top: 0px; background-color: #fff101; text-align: center; font-weight: 600; z-index: 999; overflow-x: hidden;}
+header{height: 50px; border-bottom: 2px solid #000; box-sizing: border-box; width: 100%; position: fixed; top: 0px; background-color: var(--cdYellow); text-align: center; font-weight: 600; z-index: 999; overflow-x: hidden;}
 header p{word-break: keep-all; line-height: 0; margin-top: 24px; display: inline-block;}
 header p:hover{cursor: pointer;}
-header img{width: 32px; display: inline-block; position: absolute; right: 10px; top: 7px;}
+header img{width: 32px; display: inline-block; position: absolute; right: 8px; top: 7px;}
 header img:hover{cursor: pointer;}
 
 #container{padding-top: 55px;}
-#wrapper{white-space: pre-wrap; text-align: left; padding: 0px 10px 0px; box-sizing: border-box; width: 100vw; padding-bottom: 20px; line-height: 1.4;}
+#wrapper{white-space: pre-wrap; text-align: left; padding: 0px var(--unit) 0px; box-sizing: border-box; width: 100vw; padding-bottom: 20px; line-height: 1.4;}
 #wrapper a{border-bottom: 2px solid #000; display: inline-block; height: 24px;}
 #wrapper a:hover{opacity: .5; transition: .3s}
 #wrapper img{width: 100%}
 #wrapper img:hover{opacity: 0.8; transition: .3s}
-#list{width: 100vw; border-right: 2px solid #000; height: calc(100vh - 37px); position: fixed; top:37px; left: -101%; z-index: 100; background-color: #fff101; }
+#list{width: 100vw; border-right: 2px solid #000; height: calc(100vh - 37px); position: fixed; top:37px; left: -101%; z-index: 100; background-color: var(--cdYellow); }
 
-#alert{position: fixed; z-index: 9999; top: 0px; left: 0px; width: 100vw; height: 100vh; background-color: #fff101;}
-::selection{background-color: #000; color:#fff101;}
+#alert{position: fixed; z-index: 9999; top: 0px; left: 0px; width: 100vw; height: 100vh; background-color: var(--cdYellow);}
+::selection{background-color: #000; color:var(--cdYellow);}
 
 
-#wrapper .width-50:nth-of-type(odd){width: calc(50% - 5px); margin-right: 10px;}
-#wrapper .width-50:nth-of-type(even){width: calc(50% - 5px);}
+#wrapper .width-50:nth-of-type(odd){width: calc(50% - var(--unit-half)); margin-right: var(--unit);}
+#wrapper .width-50:nth-of-type(even){width: calc(50% - var(--unit-half));}
