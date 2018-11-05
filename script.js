@@ -1,5 +1,6 @@
 var url = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/2/public/basic?alt=json-in-script&callback=?";
 var url2 = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/3/public/basic?alt=json-in-script&callback=?";
+var url3 = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/1/public/basic?alt=json-in-script&callback=?";
 
 var contentArray = [];
 var categoryArray = [];
@@ -45,12 +46,7 @@ $.getJSON(url2, function(data) {
 
 function display() {
   $.getJSON(url, function(data) {
-    $("header").css({
-      "opacity": 1
-    })
-    $("#container").css({
-      "opacity": 1
-    })
+
 
     var entry = data.feed.entry;
     var length = data.feed.openSearch$totalResults.$t;
@@ -111,13 +107,14 @@ function list() {
 
 function render(index) {
   if (contentArray[index].activation == "×") {
-    return
+    return;
   }
   if (findHash == true) {
     findHash = !findHash
-  } else {
+  } else{
     list();
   }
+
   window.location.hash = contentArray[index].hash;
   var html = ""
   $("#wrapper").remove();
@@ -130,15 +127,32 @@ function render(index) {
 
 function hashURL() {
   if (window.location.hash) {
-
     for (var i = 0; i < contentArray.length; i++) {
       var object = contentArray[i];
       // console.log(object["hash"]);
       if (window.location.hash == "#" + object["hash"]) {
         findHash = true;
         render(i);
+        $("header").css({
+              "opacity": 1
+            })
+            $("#container").css({
+              "opacity": 1
+            })
         return;
       }
     }
+  }else{
+    $.getJSON(url3, function(data) {
+      var entry = data.feed.entry;
+      $("#wrapper").append(entry[1].content.$t);
+      $("header").css({
+        "opacity": 1
+      })
+      $("#container").css({
+        "opacity": 1
+      })
+    })
   }
+
 }
