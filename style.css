@@ -8,7 +8,7 @@
 
 ::-webkit-scrollbar { display:none;}
 
-*{font-size: 18px; font-family: 'Noto Sans KR', sans-serif; font-weight: 600}
+*{font-size: 18px; font-family: 'Noto Sans KR', sans-serif; font-weight: 600; letter-spacing: -0.14px;}
 html {background:  var(--cdYellow);}
 body {margin: 0px; padding: 0px; width: 100%; height:; x-overflow: hidden;-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;cursor:default; word-break: keep-all;}
 a {color: black; text-decoration: none;}
@@ -20,9 +20,9 @@ li a:hover{cursor: pointer;}
 li{width: auto;}
 
 header{height: 50px; border-bottom: 2px solid #000; box-sizing: border-box; width: 100%; position: fixed; top: 0px; background-color: var(--cdYellow); text-align: center; font-weight: 600; z-index: 999; overflow-x: hidden;}
-header p{word-break: keep-all; line-height: 0; margin-top: 24px; display: inline-block;}
+header p{word-break: keep-all; line-height: 0; margin-top: 25px; display: inline-block;}
 header p:hover{cursor: pointer;}
-header img{width: 32px; display: inline-block; position: absolute; right: 8px; top: 7px;}
+header img{width: 32px; display: inline-block; position: absolute; right: 8px; top: 8px;}
 header img:hover{cursor: pointer;}
 
 #container{padding-top: 55px;}
