@@ -12,9 +12,9 @@ li a:hover{cursor: pointer;}
 li{width: auto;}
 
 header{height: 50px; border-bottom: 2px solid #000; box-sizing: border-box; width: 100%; position: fixed; top: 0px; background-color: #fff101; text-align: center; font-weight: 600; z-index: 999; overflow-x: hidden;}
-header p{word-break: keep-all; line-height: 0; margin-top: 23px; display: inline-block;}
+header p{word-break: keep-all; line-height: 0; margin-top: 24px; display: inline-block;}
 header p:hover{cursor: pointer;}
-header img{width: 32px; display: inline-block; position: absolute; right: 10px; top: 6px;}
+header img{width: 32px; display: inline-block; position: absolute; right: 10px; top: 7px;}
 header img:hover{cursor: pointer;}
 
 #container{padding-top: 55px;}
