@@ -20,12 +20,14 @@ header img:hover{cursor: pointer;}
 #container{padding-top: 55px;}
 #wrapper{white-space: pre-wrap; text-align: left; padding: 0px 10px 0px; box-sizing: border-box; width: 100vw; padding-bottom: 20px; line-height: 1.4;}
 #wrapper a{border-bottom: 2px solid #000; display: inline-block; height: 24px;}
-#wrapper a:hover{opacity: .5; transition: .7s}
+#wrapper a:hover{opacity: .5; transition: .3s}
 #wrapper img{width: 100%}
+#wrapper img:hover{opacity: 0.8; transition: .3s}
 #list{width: 100vw; border-right: 2px solid #000; height: calc(100vh - 37px); position: fixed; top:37px; left: -101%; z-index: 100; background-color: #fff101; }
 
 #alert{position: fixed; z-index: 9999; top: 0px; left: 0px; width: 100vw; height: 100vh; background-color: #fff101;}
 ::selection{background-color: #000; color:#fff101;}
 
 
-.width-50{width: 50%;}
+#wrapper .width-50:nth-of-type(odd){width: calc(50% - 5px); margin-right: 10px;}
+#wrapper .width-50:nth-of-type(even){width: calc(50% - 5px);}
