@@ -1,12 +1,12 @@
-var url = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/2/public/basic?alt=json-in-script&callback=?";
-var url2 = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/3/public/basic?alt=json-in-script&callback=?";
-var url3 = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/1/public/basic?alt=json-in-script&callback=?";
+var url = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/1/public/basic?alt=json-in-script&callback=?";
+var url2 = "https://spreadsheets.google.com/feeds/cells/1tqK4G41PtdN4KZobLkVGZnWzio5GItNnTxPv6w-UUfM/2/public/basic?alt=json-in-script&callback=?";
+
 
 var contentArray = [];
 var categoryArray = [];
 var listToggle = false;
 var findHash = false;
-
+var mainHTML="";
 
 function Category(one) {
   this.one = one;
@@ -36,22 +36,35 @@ $.getJSON(url2, function(data) {
   var entry = data.feed.entry;
   var status = entry[1].content.$t
   if (status == "maintenance") {
-    $("html").append("　The site is currently under maintenance.")
-  } else if (status == "close"){
-    $("html").append("　The site has been closed or removed. Please contact admin.<br>　→ hiuproto@gmail.com")
+    $("#alert").append("<br>　The site is currently under maintenance.")
+    $("header").remove();
+    $("#container").remove();
+    $("#list").remove();
+  } else if (status == "close") {
+    $("#alert").append("<br>　The site has been closed or removed. Please contact admin.<br>　→ hiuproto@gmail.com")
+    $("header").remove();
+    $("#container").remove();
+    $("#list").remove();
   } else {
-    display()
+    $("#alert").remove();
+
   }
 })
-
+    display()
 function display() {
   $.getJSON(url, function(data) {
-
+    $("header").css({
+      "opacity": 1
+    })
+    $("#container").css({
+      "opacity": 1
+    })
 
     var entry = data.feed.entry;
     var length = data.feed.openSearch$totalResults.$t;
     var html = ""
-    for (var i = 7; i < length; i++) {
+    mainHTML = entry[1].content.$t;
+    for (var i = 9; i < length; i++) {
       contentArray[entry[i + 1].content.$t] = new Content(
         entry[i].content.$t, //count
         entry[i + 1].content.$t, //index
@@ -111,7 +124,7 @@ function render(index) {
   }
   if (findHash == true) {
     findHash = !findHash
-  } else{
+  } else {
     list();
   }
 
@@ -133,26 +146,10 @@ function hashURL() {
       if (window.location.hash == "#" + object["hash"]) {
         findHash = true;
         render(i);
-        $("header").css({
-              "opacity": 1
-            })
-            $("#container").css({
-              "opacity": 1
-            })
         return;
       }
     }
-  }else{
-    $.getJSON(url3, function(data) {
-      var entry = data.feed.entry;
-      $("#wrapper").append(entry[1].content.$t);
-      $("header").css({
-        "opacity": 1
-      })
-      $("#container").css({
-        "opacity": 1
-      })
-    })
+  } else {
+      $("#wrapper").append(mainHTML)
+    }
   }
-
-}
