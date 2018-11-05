@@ -113,10 +113,24 @@ function list() {
   } else {
     $("#list").animate({
       left: "-101%"
+    }, 0);
+  }
+  listToggle = !listToggle
+}
+
+function list2() {
+  if (!listToggle) {
+    $("#list").animate({
+      left: 0
+    }, 300);
+  } else {
+    $("#list").animate({
+      left: "-101%"
     }, 300);
   }
   listToggle = !listToggle
 }
+
 
 function render(index) {
   if (contentArray[index].activation == "×") {
