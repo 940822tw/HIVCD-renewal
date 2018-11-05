@@ -23,3 +23,5 @@ header img:hover{cursor: pointer;}
 #wrapper a:hover{opacity: .5; transition: .7s}
 #wrapper img{width: 100%}
 #list{width: 100vw; border-right: 2px solid #000; height: calc(100vh - 37px); position: fixed; top:37px; left: -101%; z-index: 100; background-color: #fff101; }
+
+::selection{background-color: #000; color:#fff101;}
