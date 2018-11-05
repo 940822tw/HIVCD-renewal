@@ -26,3 +26,6 @@ header img:hover{cursor: pointer;}
 
 #alert{position: fixed; z-index: 9999; top: 0px; left: 0px; width: 100vw; height: 100vh; background-color: #fff101;}
 ::selection{background-color: #000; color:#fff101;}
+
+
+.width-50{width: 50%;}
