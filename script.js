@@ -6,7 +6,7 @@ var contentArray = [];
 var categoryArray = [];
 var listToggle = false;
 var findHash = false;
-var mainHTML="";
+var mainHTML = "";
 
 function Category(one) {
   this.one = one;
@@ -50,7 +50,9 @@ $.getJSON(url2, function(data) {
 
   }
 })
-    display()
+display()
+
+
 function display() {
   $.getJSON(url, function(data) {
     $("header").css({
@@ -145,7 +147,7 @@ function render(index) {
   // window.location.hash = contentArray[index].hash;
   var baseUrl = window.location.href.split('#')[0];
   window.location.replace(baseUrl + '#' + contentArray[index].hash);
-
+  breadCrumbs(index)
   var html = ""
   $("#wrapper").remove();
   html += "<div id='wrapper'>";
@@ -167,6 +169,21 @@ function hashURL() {
       }
     }
   } else {
-      $("#wrapper").append(mainHTML)
-    }
+    $("#wrapper").append(mainHTML)
   }
+}
+
+
+function breadCrumbs(i) {
+  // var one = contentArray[i].no.substring(0,1);
+  var one = contentArray[i].no.substring(2, 3);
+  var two = contentArray[i].title;
+  one = contentArray[i - one].title;
+  if (one == two) {
+    console.log(one);
+    return one
+  } else {
+    console.log(one + " → " + two);
+    return one + " → " + two;
+  }
+}
