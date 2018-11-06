@@ -7,6 +7,7 @@ var categoryArray = [];
 var listToggle = false;
 var findHash = false;
 var mainHTML = "";
+var crumb = false;
 
 function Category(one) {
   this.one = one;
@@ -140,20 +141,25 @@ function render(index) {
   }
   if (findHash == true) {
     findHash = !findHash
-  } else {
+
+  } else if (crumb == true) {
+    crumb = !crumb;
+    if(listToggle==true){list()}
+  }else {
     list();
   }
 
   // window.location.hash = contentArray[index].hash;
   var baseUrl = window.location.href.split('#')[0];
   window.location.replace(baseUrl + '#' + contentArray[index].hash);
-  breadCrumbs(index)
   var html = ""
   $("#wrapper").remove();
   html += "<div id='wrapper'>";
   html += contentArray[index].html;
   html += "</div>"
   $("#container").append(html);
+  breadCrumbs(index);
+
 }
 
 
@@ -165,6 +171,7 @@ function hashURL() {
       if (window.location.hash == "#" + object["hash"]) {
         findHash = true;
         render(i);
+
         return;
       }
     }
@@ -175,15 +182,25 @@ function hashURL() {
 
 
 function breadCrumbs(i) {
-  // var one = contentArray[i].no.substring(0,1);
-  var one = contentArray[i].no.substring(2, 3);
+  var one = contentArray[i].no.substring(2, 3)*1;
   var two = contentArray[i].title;
+  var oneNum = i-one*1;
   one = contentArray[i - one].title;
+  var twoNum = i;
+  var html ="";
   if (one == two) {
-    console.log(one);
-    return one
+    console.log(oneNum);
+    html += "<a href='index.html'><p>홈</p></a> → "
+    html += "" + one + ""
+    $("#title")[0].innerHTML = html;
   } else {
-    console.log(one + " → " + two);
-    return one + " → " + two;
+    console.log(oneNum);
+    console.log(twoNum);
+    html += "<a href='index.html'><p>홈</p></a> → "
+    html += "<a onclick='crumb=true; render("+oneNum+")'>" + one + "</a> → "
+    html += "" + two + "";
+    $("#title")[0].innerHTML = html;
+    html= "";
+
   }
 }
