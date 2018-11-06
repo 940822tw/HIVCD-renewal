@@ -142,7 +142,10 @@ function render(index) {
     list();
   }
 
-  window.location.hash = contentArray[index].hash;
+  // window.location.hash = contentArray[index].hash;
+  var baseUrl = window.location.href.split('#')[0];
+  window.location.replace(baseUrl + '#' + contentArray[index].hash);
+
   var html = ""
   $("#wrapper").remove();
   html += "<div id='wrapper'>";
